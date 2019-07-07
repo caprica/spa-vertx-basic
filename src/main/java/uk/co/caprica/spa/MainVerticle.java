@@ -42,9 +42,7 @@ public class MainVerticle extends AbstractVerticle {
         // Catch-all for non-existent API routes to return a Bad Request status code
         router.route("/api/*").handler(routingContext -> routingContext.response().setStatusCode(400).end());
 
-        // FIXME comment
-        // ReactJS initial artifacts, e.g. index.html, manifest, favicon etc, and also the ReactJS application's static
-        // webroot (in the ReactJS application there are in a "/static" sub-directory).
+        // Static artefacts
         router.route("/*").handler(StaticHandler.create("webroot"));
 
         // Catch-all route, anything unmatched is sent to the SPA main page for client-side routing (we can't just
